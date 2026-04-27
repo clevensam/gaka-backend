@@ -14,19 +14,10 @@ import healthRoutes from './routes/health.js';
 
 const app = express();
 
-const corsOptionsDelegate = (req: Request, callback: (err: Error | null, options?: cors.CorsOptions) => void) => {
-  const origin = req.header('Origin');
-  
-  if (isDev) {
-    callback(null, { origin: 'http://localhost:5173', credentials: true });
-  } else if (origin && (origin.includes('vercel.app') || origin.includes('localhost'))) {
-    callback(null, { origin: true, credentials: true });
-  } else {
-    callback(null, { origin: true, credentials: true });
-  }
-};
-
-app.use(cors(corsOptionsDelegate));
+app.use(cors({
+  origin: true,
+  credentials: true,
+}));
 
 app.use(express.json({ limit: '10mb' }));
 
