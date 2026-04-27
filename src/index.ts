@@ -21,15 +21,15 @@ app.use(cors({
 
 app.use(express.json({ limit: '10mb' }));
 
-app.use('/api/health', healthRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/storage', storageRoutes);
-app.use('/api/blog', blogRoutes);
-app.use('/api/blog/comments', blogCommentsRoutes);
-app.use('/api/blog/likes', blogLikesRoutes);
-app.use('/api/modules', modulesRoutes);
-app.use('/api/resources', resourcesRoutes);
-app.use('/api/chat', chatRoutes);
+app.use('/health', healthRoutes);
+app.use('/auth', authRoutes);
+app.use('/storage', storageRoutes);
+app.use('/blog', blogRoutes);
+app.use('/blog/comments', blogCommentsRoutes);
+app.use('/blog/likes', blogLikesRoutes);
+app.use('/modules', modulesRoutes);
+app.use('/resources', resourcesRoutes);
+app.use('/chat', chatRoutes);
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error('Unhandled error:', err);
