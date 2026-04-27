@@ -20,7 +20,7 @@ export const config = {
     maxRequests: 100,
   },
   cors: {
-    origin: process.env.NODE_ENV !== 'production' ? 'http://localhost:5173' : process.env.ALLOWED_ORIGIN || '',
+    origin: process.env.NODE_ENV !== 'production' ? 'http://localhost:5173' : process.env.ALLOWED_ORIGIN || 'https://gakaedu.vercel.app',
   },
 } as const;
 
