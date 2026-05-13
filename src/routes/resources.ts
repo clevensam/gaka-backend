@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { supabaseAdmin } from '../services/supabase.js';
+import { adminMiddleware, AuthenticatedRequest } from '../middleware/auth.js';
 
 const router = Router();
 
@@ -51,7 +52,7 @@ router.get('/:id', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/', async (req: Request, res: Response) => {
+router.post('/', adminMiddleware, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { title, type, view_url, download_url, module_id } = req.body;
 
@@ -77,7 +78,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-router.put('/:id', async (req: Request, res: Response) => {
+router.put('/:id', adminMiddleware, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { id } = req.params;
     const { title, type, view_url, download_url, module_id } = req.body;
@@ -101,7 +102,7 @@ router.put('/:id', async (req: Request, res: Response) => {
   }
 });
 
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete('/:id', adminMiddleware, async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { id } = req.params;
 
